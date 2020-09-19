@@ -35,7 +35,9 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api'
   ], function() {
-    Route::post('compare', 'CompareController@getAll');
-    Route::post('getCompare', 'CompareController@getCompare');
-    Route::post('getComparePorc', 'CompareController@getComparePorc');
+    Route::resources([
+        'apartments' => ApartmentController::class,
+        'interested' => InterestedController::class,
+        'apartment_interested' => ApartmentInterestedController::class,
+    ]);
 });
